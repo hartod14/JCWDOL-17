@@ -163,3 +163,60 @@ function diffArray(arr1: number[], arr2: number[]) {
 diffArray([1, 2, 3, 4, 5], [3, 4, 5, 6, 7])
 
 ///////////////////////////// Exercise C //////////////////////////////
+//1
+function primitiveData(arr: any[]) {
+    let result: any[] = []
+    arr.forEach(value => {
+        if (typeof (value) != 'object') {
+            result.push(value)
+        }
+    });
+
+    console.log(result);
+
+}
+
+primitiveData([1, [], undefined, {}, "string", {}, []])
+
+//2
+function sumDuplicate(arr: number[]) {
+    let checkedArr: number[] = []
+    let duplicated: number[] = []
+    let result: number = 0
+    arr.forEach(value => {
+        if (checkedArr.indexOf(value) == -1) {
+            checkedArr.push(value)
+        } else {
+            if (duplicated.indexOf(value) == -1) {
+                duplicated.push(value)
+                result += value
+            }
+            duplicated.push(value)
+            result += value
+        }
+    });
+
+    console.log(result);
+
+}
+
+sumDuplicate([10, 20, 40, 10, 50, 30, 10, 60, 10])
+
+//3
+function scissorRockPaper(input: string) {
+    let option: string[] = ['scissor', 'rock', 'paper']
+    let myChoice = option.indexOf(input)
+    let botChoice = Math.floor(Math.random() * 3);
+
+    if ((myChoice === 0 && botChoice === 1) || 
+        (myChoice === 1 && botChoice === 2) || 
+        (myChoice === 2 && botChoice === 0)) {
+        console.log(`You choose ${option[myChoice]} and bot choose ${option[botChoice]} = You Lose!`);
+    } else if (myChoice == botChoice) {
+        console.log(`You choose ${option[myChoice]} and bot choose ${option[botChoice]} = You Draw!`);
+    } else {
+        console.log(`You choose ${option[myChoice]} and bot choose ${option[botChoice]} = You Win!`);
+    }
+}
+
+scissorRockPaper('scissor')
